@@ -69,7 +69,6 @@ public class MainScript {
 				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 
 		// Ask for the type
-
 		int box = 0;
 
 		do {
@@ -105,15 +104,7 @@ public class MainScript {
 			}
 
 		} while (box == 1 || box == 2 || box == 3);
-
-		/*
-		 * System.out.println("You can now choose your Tamagochi's type");
-		 * System.out.println("Press 1 for a Dragon,");
-		 * System.out.println("Press 2 for a Cat");
-		 * System.out.println("Press 3 for a Fish");
-		 * 
-		 * String typeLine = sc.nextLine();
-		 */
+		
 		String typeLine = (String) JOptionPane.showInputDialog(null,
 				"You can now choose your Tamagochi's type  \n" + "· Press 1 for a Dragon \n" + "· Press 2 for a Cat \n"
 						+ "· Press 3 for a Fish \n",
@@ -132,13 +123,14 @@ public class MainScript {
 		}
 
 		// Ask for the name
-
 		String name = (String) JOptionPane.showInputDialog(null, "Please enter the name of your Tamagochi", "Tamagochi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
+		
 		// Turn the first letter in uppercase
 		String nameUp = name.substring(0, 1).toUpperCase() + name.substring(1);
 
+		
 		// Ask for color & hair color
 		String color = (String) JOptionPane.showInputDialog(null, "Please enter the color of your Tamagochi", "Tamagochi",
 				JOptionPane.INFORMATION_MESSAGE,
@@ -146,6 +138,7 @@ public class MainScript {
 		String hairColor = (String) JOptionPane.showInputDialog(null, "Please enter the haircolor of your Tamagochi", "Tamagochi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"),  null, "");
+		
 
 		// Instanciate the new Tamagochi
 		Tamagochi tamagochiPlayer = null;
@@ -167,6 +160,7 @@ public class MainScript {
 					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			createYourTamagochi();
 		}
+		
 
 		// Recap all Tamagochi's information
 		if (tamagochiPlayer != null) {
@@ -412,6 +406,12 @@ public class MainScript {
 				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 	}
 
+	/**
+	 * 
+	 * Pop up a picture of the TamagochiPlayer Type
+	 * 
+	 * @param type
+	 */
 	public static void popUpImage(String type) {
 
 		JFrame f = new JFrame(); // creates jframe f
