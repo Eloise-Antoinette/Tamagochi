@@ -7,6 +7,7 @@ public class TamagochiFish extends Tamagochi {
 	public TamagochiFish(String name, String color, String hairColor) {
 		super(name, color, hairColor);
 		
+		//Fish's parameters initialisation
 		this.health = 80;
 		this.hunger = 0;
 		this.lifeTime = 60;
