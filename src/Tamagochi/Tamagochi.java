@@ -5,6 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+/**
+ * @author ELO.MOREAU
+ *
+ */
 public abstract class Tamagochi {
 
 	protected String name;
@@ -21,13 +28,19 @@ public abstract class Tamagochi {
 
 	List<Tamagochi> allMyBabies = new ArrayList<Tamagochi>();
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 * @param color
+	 * @param hairColor
+	 */
 	public Tamagochi(String name, String color, String hairColor) {
-		
+
 		this.bathroom = 0;
 		this.isMask = false;
 		this.isAlive = true;
-		
-		
+
 		this.name = name;
 		this.color = color;
 		this.hairColor = hairColor;
@@ -36,22 +49,19 @@ public abstract class Tamagochi {
 	// ----------------------METHODS----------------------
 
 	/**
-	 * 
+	 * Gets all Status parameters in console
 	 */
 	public void getStatus() {
-		System.out.println("Lifetime Level : " + this.lifeTime);
-		System.out.println("Health Level : " + this.health);
-		System.out.println("Hunger Level : " + this.hunger);
-		System.out.println("Bathroom Level : " + this.bathroom);
-		System.out.println("");
+		JOptionPane.showMessageDialog(null, "Lifetime Level : " + this.lifeTime + "\n Health Level : " + this.health
+				+ " \n Hunger Level : " + this.hunger + "\n Bathroom Level : " + this.bathroom);
 	}
 
 	/**
+	 * Make the Tamagochi wash itself
 	 * 
 	 */
 	public void isWashingItself() {
-		System.out.println(this.name + " : Whaouh ! I'm all CLEAN Now !");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null, this.name + " : Whaouh ! I'm all CLEAN Now !");
 		changeBathroom(2);
 		changeHealth(+5);
 		changeHunger(2);
@@ -59,11 +69,11 @@ public abstract class Tamagochi {
 	}
 
 	/**
+	 * Make the Tamagochi practise
 	 * 
 	 */
 	public void isPractising() {
-		System.out.println(this.name + " : Whaouh ! Practising makes me feel so STRONG !");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null, this.name + " : Whaouh ! Practising makes me feel so STRONG !");
 		changeBathroom(3);
 		changeHealth(+5);
 		changeHunger(15);
@@ -71,11 +81,11 @@ public abstract class Tamagochi {
 	}
 
 	/**
+	 * Make the Tamagochi go to the bathrooms
 	 * 
 	 */
 	public void isGoingToBathroom() {
-		System.out.println(this.name + " : I feel lighter ! Thank you very much");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null, this.name + " : I feel lighter ! Thank you very much");
 		changeBathroom(0);
 		changeHealth(10);
 		changeHunger(6);
@@ -83,11 +93,11 @@ public abstract class Tamagochi {
 	}
 
 	/**
+	 * Make the Tamagochi rest
 	 * 
 	 */
 	public void isResting() {
-		System.out.println(this.name + " : ZZZzzzzzzzzZZZZZzzzzzzzZZZZZzzz");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null, this.name + " : ZZZzzzzzzzzZZZZZzzzzzzzZZZZZzzz");
 		changeBathroom(10);
 		changeHealth(+15);
 		changeHunger(2);
@@ -95,18 +105,19 @@ public abstract class Tamagochi {
 	}
 
 	/**
+	 * Make the Tamagochi eat
+	 * 
 	 * @param food
 	 */
 	public void isEating(String food) {
-		System.out.println(this.name + " : Mmmmmmh ! This " + food + " is deliciouuuus !! ");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null, this.name + " : Mmmmmmh ! This " + food + " is deliciouuuus !! ");
 		changeBathroom(10);
 		changeHealth(+10);
 		changeHunger(-15);
 		decreaseLifeTime(3);
 
 		if (this.hunger > 50) {
-			System.out.println(
+			JOptionPane.showMessageDialog(null,
 					this.name + " : Hum... I feel full, try not to feed me so often, it decrease my health...");
 			changeHealth(-10);
 		}
@@ -114,11 +125,13 @@ public abstract class Tamagochi {
 	}
 
 	/**
+	 * Make the Tamagochi meets another Tamagochi
+	 * 
 	 * @param friend
 	 */
 	public void isMeetingAFriend(Tamagochi friend) {
-		System.out.println(this.name + " : What a pleasure hanging out with" + friend.getName() + " !");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null,
+				this.name + " : What a pleasure hanging out with" + friend.getName() + " !");
 		changeHealth(5);
 		changeHunger(+2);
 		changeBathroom(+5);
@@ -126,50 +139,47 @@ public abstract class Tamagochi {
 	}
 
 	/**
+	 * Make the Tamagochi have a baby with another Tamagochi
+	 * 
 	 * @param partner
 	 * @param name
 	 */
 	public void isMakingABaby(Tamagochi partner, String name, int type) {
-		
 
-		System.out.println(this.name + " : I'm making a baby named " + name + " with " + partner.getName() + " !");
-		System.out.println("");
+		JOptionPane.showMessageDialog(null,
+				this.name + " : I'm making a baby named " + name + " with " + partner.getName() + " !");
+
+		// Make the baby gets random features from both its parents
+
 		Random rand = new Random();
-
-		String babyName = name;
 
 		List<String> colors = Arrays.asList(this.color, partner.color);
 		String babyColor = colors.get(rand.nextInt(colors.size()));
 
 		List<String> hairColors = Arrays.asList(this.hairColor, partner.hairColor);
 		String babyHairColor = hairColors.get(rand.nextInt(colors.size()));
-		
-		
-		
-		
-		// TODO list
-		switch(type) {
-		case 1 : 
-		
+
+		// Create the babyTamagochi regarding the type wanted
+		switch (type) {
+		case 1:
+
 			allMyBabies.add(new TamagochiDragon(name, babyColor, babyHairColor));
 			break;
-		case 2 :
+		case 2:
 			allMyBabies.add(new TamagochiCat(name, babyColor, babyHairColor));
 			break;
-		case 3 : 
+		case 3:
 			allMyBabies.add(new TamagochiFish(name, babyColor, babyHairColor));
 			break;
-		default :
+		default:
 			break;
 		}
-		
-		System.out.println("..•.¸¸•´¯`•.¸¸. CONGRATULATIONS ..•.¸¸•´¯`•.¸¸. ");
-		System.out.println("");
-		System.out.println(".•°•. A new baby is born ! Its name is " + name + ", his color is " + babyColor
-				+ " and his hair is " + hairColor + " .•°•. ");
-		System.out.println("");
-		System.out.println("Enter 9 to gets all your babies");
-		System.out.println("");
+
+		// Congratulations message
+		JOptionPane.showMessageDialog(null,
+				"..•.¸¸•´¯`•.¸¸. CONGRATULATIONS ..•.¸¸•´¯`•.¸¸. \n" + "\n" + ".•°•. A new baby is born ! Its name is "
+						+ name + ", his color is " + babyColor + " and his hair is " + hairColor + " .•°•.\n " + "\n"
+						+ "You can enter the 9 command to gets all your babies\n");
 		isFeeling("happy");
 		changeBathroom(+10);
 		changeHealth(-20);
@@ -178,22 +188,28 @@ public abstract class Tamagochi {
 
 	}
 
-	public void getBabiesList() {
+	/**
+	 * Gets all the Babies features in console
+	 */
+	public String getBabiesList() {
 		int blSize = allMyBabies.size();
-
+		String allBabies = "";
 		for (Tamagochi tamagochi : allMyBabies) {
-			System.out.println(" Name " + tamagochi.getName() + ", color : " + tamagochi.color + ", hairColor : "
-					+ tamagochi.hairColor);
-			System.out.println("");
+			allBabies += " Name " + tamagochi.getName() + ", color : " + tamagochi.color + ", hairColor : "
+					+ tamagochi.hairColor + "\n";
+
 		}
+		return allBabies;
+
 	}
 
 	/**
-	 * 
+	 * Make the Tamagochi smoke
 	 */
 	public void isSmoking() {
-		System.out.println(this.name + " : Kof, kof! I have to quit smoking !!");
-		System.out.println("");
+
+		JOptionPane.showMessageDialog(null,
+				this.name + " : Kof, kof! I have to quit smoking !! \n");
 		changeHealth(-20);
 		changeBathroom(2);
 		changeHunger(2);
@@ -204,27 +220,38 @@ public abstract class Tamagochi {
 
 	// MODIFIED GETTERS & SETTERS
 
+	/**
+	 * Dye Hair color
+	 * 
+	 * @param hairColor "red" or "roux" denied
+	 */
 	public void setHairColor(String hairColor) {
+	
 		if (hairColor.equals("roux") || hairColor.equals("red")) {
-			System.out.println(this.name + " : Not in red you fool ! My hair color is still + " + this.hairColor);
+			JOptionPane.showMessageDialog(null, this.name + " : Not in red you fool ! My hair color is still + " + this.hairColor);
 		} else {
-			System.out.println(this.name + " : My hair is now " + this.hairColor);
+			JOptionPane.showMessageDialog(null,this.name + " : My hair is now " + this.hairColor);
 			this.hairColor = hairColor;
 		}
 	}
-	
+
+	/**
+	 * Put on / off Tamagochi's mask
+	 * 
+	 * @param isMask
+	 */
 	public void setMask(boolean isMask) {
+		
 		if (isMask) {
-			System.out.println(this.name + " : Really do I have to where these ? I'm a HAMSTER");
+			JOptionPane.showMessageDialog(null,this.name + " : Really do I have to where these ? I'm a HAMSTER");
 			isFeeling("sad");
 		} else {
-			System.out.println(this.name + " : Whaouh, it really feels better");
+			JOptionPane.showMessageDialog(null, this.name + " : Whaouh, it really feels better");
 			isFeeling("happy");
 		}
 		this.isMask = isMask;
+		
 	}
-
-
 
 	// AUTO GENERATED GETTERS AND SETTERS
 
@@ -291,42 +318,53 @@ public abstract class Tamagochi {
 		return hunger;
 	}
 
-	
-
+	/**
+	 * @return
+	 */
 	public String getType() {
 		return type;
 	}
 	
+	
+
 	// ----------------------LIFE METHODS----------------------
 
 	// ********************* HEALTH *********************
 
 	/**
+	 * Modify Health Level and Launches Checks
+	 * 
 	 * @param pts
 	 */
 	public void changeHealth(int pts) {
 		if (isAlive) {
 			this.health += pts;
-			System.out.println(pts > 0 ? "+" : "" + pts + " for health. (" + this.health + ")");
-			System.out.println("");
+			JOptionPane.showMessageDialog(null, pts > 0 ? "+" : "" + pts + " for health. (" + this.health + ") \n", "Tamagochi",
+					JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			checkHealth();
+
 		}
 	}
 
 	/**
+	 * Checks if the Tamagochi dies
+	 * 
+	 * Warns if health level is low
 	 * 
 	 */
 	public void checkHealth() {
 		if (this.health <= 0) {
 			isDead(true);
 		} else if (this.health <= 40) {
-			System.out.println("/!\\ CAUTION /!\\");
-			System.out.println(this.name + " : Careful, my health level is very low : " + this.health + " !");
-			System.out.println(this.name + " : Try something to make it up !");
-			System.out.println("");
+			JOptionPane.showMessageDialog(null,
+					"/!\\ CAUTION /!\\ \n" + this.name + " : Careful, my health level is very low : " + this.health
+							+ " ! \n" + this.name + " : Try something to make it up ! \n");
 		} else if (this.health >= 100) {
-			System.out.println(this.name + " : Congrats ! my health level is imbelievable : " + this.health + " !");
-			System.out.println("");
+			JOptionPane.showMessageDialog(null,
+					this.name + " : Congrats ! my health level is imbelievable : " + this.health + " !", "Tamagochi",
+					JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 		}
 
 	}
@@ -334,6 +372,9 @@ public abstract class Tamagochi {
 	// ********************* HUNGER *********************
 
 	/**
+	 * 
+	 * Modify Hunger Level and Launches Checks
+	 * 
 	 * @param pts
 	 */
 	public void changeHunger(int pts) {
@@ -341,21 +382,28 @@ public abstract class Tamagochi {
 			this.hunger += pts;
 			this.hunger = this.hunger < 0 ? 0 : this.hunger;
 			String indice = pts > 0 ? "+" : "";
-			System.out.println(indice + pts + " of hunger. (" + this.hunger + "). ");
+			JOptionPane.showMessageDialog(null, indice + pts + " of hunger. (" + this.hunger + "). ", "Tamagochi",
+					JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			checkHunger();
 		}
 	}
 
 	/**
+	 * Checks if the Tamagochi dies
+	 * 
+	 * Warns if health level is high
 	 * 
 	 */
 	public void checkHunger() {
 		if (this.hunger > 30) {
 			isDead(true);
 		} else if (this.hunger > 20) {
-			System.out.println("/!\\ CAUTION /!\\");
-			System.out.println(this.name + " : Careful, your hunger level is very low : " + this.hunger + " !");
-			System.out.println(this.name + " : Try something to make it up ! You die at 30");
+			JOptionPane.showMessageDialog(null,
+					"/!\\ CAUTION /!\\ \n" + this.name + " : Careful, your hunger level is very low : " + this.hunger
+							+ " ! \n" + this.name + " : Try something to make it up ! You die at 30", "Tamagochi",
+							JOptionPane.INFORMATION_MESSAGE,
+							new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			isFeeling("sad");
 		} else if (this.health <= 0) {
 			isFeeling("happy");
@@ -366,6 +414,9 @@ public abstract class Tamagochi {
 	// ********************* LIFETIME *********************
 
 	/**
+	 * 
+	 * Decreases life time / Launches death if it's time...
+	 * 
 	 * @param pts
 	 */
 	public void decreaseLifeTime(int pts) {
@@ -374,20 +425,27 @@ public abstract class Tamagochi {
 			if (lifeTime <= 0) {
 				isDead(true);
 			} else if (lifeTime < 5) {
-				System.out.println(this.name + " : I'm getting old, I have " + this.lifeTime
-						+ " pts left... Not much time to say goodbye...");
+				JOptionPane.showMessageDialog(null, this.name + " : I'm getting old, I have " + this.lifeTime
+						+ " pts left... Not much time to say goodbye...", "Tamagochi",
+						JOptionPane.INFORMATION_MESSAGE,
+						new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 				isFeeling("sad");
 			}
 		}
 	}
 
 	/**
+	 * 
+	 * Makes Tamagochi die
+	 * 
 	 * @param isDead
 	 */
 	public void isDead(boolean isDead) {
 		if (isAlive) {
 			if (isDead) {
-				System.out.println("Votre Tamagochi est MORT");
+				JOptionPane.showMessageDialog(null, "Votre Tamagochi est MORT", "Tamagochi",
+						JOptionPane.INFORMATION_MESSAGE,
+						new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 				isAlive = false;
 			}
 		}
@@ -396,46 +454,70 @@ public abstract class Tamagochi {
 	// ********************* FEELINGS *********************
 
 	/**
+	 * 
+	 * Make the Tamagochi reacts to feeling
+	 * 
 	 * @param humor
 	 */
 	public void isFeeling(String humor) {
 		if (isAlive) {
 			if (humor.equals("happy")) {
-				System.out.println(this.name + " : Jumping around because I'm so happpppy !");
+				JOptionPane.showMessageDialog(null, this.name + " : Jumping around because I'm so happpppy !", "Tamagochi",
+						JOptionPane.INFORMATION_MESSAGE,
+						new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			} else if (humor.equals("sad")) {
-				System.out.println(this.name + " : Laying down because I'm so saaaaad...");
+				JOptionPane.showMessageDialog(null, this.name + " : Laying down because I'm so saaaaad...", "Tamagochi",
+						JOptionPane.INFORMATION_MESSAGE,
+						new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			}
-			System.out.println("");
 		}
 	}
 
 	// ********************* HIGH *********************
 
 	/**
+	 * 
+	 * Make your Tamagochi grows
+	 * 
 	 * @param pts
 	 */
 	public void changeHigh(int pts) {
 		if (isAlive) {
 			this.high += pts;
-			System.out.println(this.name + " : I'm GROOWIIING, i'm now " + high + " meters tall !");
-			System.out.println("");
+			JOptionPane.showMessageDialog(null, this.name + " : I'm GROOWIIING, i'm now " + high + " meters tall !", "Tamagochi",
+					JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
+
 		}
 	}
 
 	// ********************* BATHROOM *********************
 
 	/**
+	 * 
+	 * Change your need to go to the bathroom
+	 * 
 	 * @param pts
 	 */
 	public void changeBathroom(int pts) {
 		if (isAlive) {
 			if (this.bathroom > 30) {
-				System.out.println(
-						this.name + " : Careful, I really need to go to the bathroom, my health is getting lower !");
-				System.out.println("");
+				JOptionPane.showMessageDialog(null,
+						this.name + " : Careful, I really need to go to the bathroom, my health is getting lower !", "Tamagochi",
+						JOptionPane.INFORMATION_MESSAGE,
+						new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 				changeHealth(-10);
 			}
 		}
+	}
+
+	public void popupTypeInformation() {
+
+		JOptionPane.showMessageDialog(null, "Type :" + this.getType() + " \n High :" + this.getHigh() + " \n Health : "
+				+ this.getHealth() + "\n Life time" + this.getLifeTime() + "\n Hunger " + this.getLifeTime(), "Tamagochi",
+				JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
+
 	}
 
 }

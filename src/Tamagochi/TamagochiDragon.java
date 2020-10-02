@@ -1,10 +1,15 @@
 package Tamagochi;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 public class TamagochiDragon extends Tamagochi {
 
 	
-
-
 	/**
 	 * 
 	 * Constructor 
@@ -15,6 +20,7 @@ public class TamagochiDragon extends Tamagochi {
 	public TamagochiDragon(String name, String color, String hairColor) {
 		super(name, color, hairColor);
 		
+		//Dragon's parameters initialisation
 		this.health = 120;
 		this.hunger = 10;
 		this.lifeTime = 60;
@@ -24,18 +30,6 @@ public class TamagochiDragon extends Tamagochi {
 	}
 	
 
-
-
-
-	/**
-	 * @return the high
-	 */
-	public double getHigh() {
-		return high;
-	}
-
-	
-	
 	
 
 }
