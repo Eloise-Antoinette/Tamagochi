@@ -16,31 +16,32 @@ public class MainScript {
 	public static void main(String[] args) {
 		
 		
-		//Managing User Interface
-			Color myColor = new Color(212, 239, 223);
-			Color colorText = new Color( 17, 122, 101 );
-			Color lighterColor = new Color( 234, 250, 241 );
-			Color darkColor = new Color(14, 102, 85);
-			
-		  UIManager UI=new UIManager();
-		  UI.put("OptionPane.background", myColor);
-		  UI.put("Panel.background", myColor);
-		  UI.put("Button.foreground", colorText);
-		  UI.put("Button.highlight", myColor);
-		  UI.put("Button.font", Font.getFont("Helvetica"));
-		  UI.put("Button.background", lighterColor );
-		  UI.put("OptionPane.inputDialogTitle", "Tamagochi" );
-		  UI.put("Label.font",new Font("Verdana",Font.TYPE1_FONT, 15));
-		  
-		
+		// Managing User Interface
+		Color myColor = new Color(212, 239, 223);
+		Color colorText = new Color(17, 122, 101);
+		Color lighterColor = new Color(234, 250, 241);
+		Color darkColor = new Color(14, 102, 85);
+
+		UIManager UI = new UIManager();
+		UI.put("OptionPane.background", myColor);
+		UI.put("Panel.background", myColor);
+		UI.put("Button.foreground", colorText);
+		UI.put("Button.highlight", myColor);
+		UI.put("Button.font", new Font("Montserrat", Font.TYPE1_FONT, 15));
+		UI.put("Button.background", lighterColor);
+		UI.put("OptionPane.inputDialogTitle", "Tamagochi");
+		UI.put("Label.font", new Font("Montserrat Light", Font.LAYOUT_NO_LIMIT_CONTEXT, 15));
+		// UI.put()
+
 		// Creating others Tamagochi to meet
-			TamagochiDragon elysia = new TamagochiDragon("Elysia", "blue", "green");
-			TamagochiCat carol = new TamagochiCat("Carol", "silver", "gold");
-			TamagochiFish charles = new TamagochiFish("Charles", "green", "red");
-		  
-		  //Greetings		  
-		JOptionPane.showMessageDialog(null, " \n  ·**·.¸(¯`·.¸*. WELCOME .*¸.·´¯)¸.·**·.   \n ", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
-		
+		TamagochiDragon elysia = new TamagochiDragon("Elysia", "blue", "green");
+		TamagochiCat carol = new TamagochiCat("Carol", "silver", "gold");
+		TamagochiFish charles = new TamagochiFish("Charles", "green", "red");
+
+		// Greetings
+		JOptionPane.showMessageDialog(null, " \n  ·**·.¸(¯`·.¸*. WELCOME .*¸.·´¯)¸.·**·.   \n ", "Tamagochi",
+				JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 
 		// Creating the player Tamagochi
 		Tamagochi tamagochiPlayer = createYourTamagochi();
@@ -73,11 +74,11 @@ public class MainScript {
 
 		do {
 			String boxLine = (String) JOptionPane.showInputDialog(null,
-					"You're gonna choose your Tamagochi type : Do you want to discover wich features each type gets ?  \n "
-							+ "Press 1 for a Dragon \n" + "Press 2 for a Cat \n" + "Press 3 for a Fish \n"
-							+ "Press any other key to pass",
-					"Tamagochi",
-					JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+					"You're gonna choose your Tamagochi type : Do you want to discover wich features each type gets ?  \n"
+							+ "· Press 1 for a Dragon \n" + "· Press 2 for a Cat \n" + "· Press 3 for a Fish \n"
+							+ "· Press any other key to pass",
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 
 			try {
 				box = Integer.parseInt(boxLine);
@@ -113,9 +114,11 @@ public class MainScript {
 		 * 
 		 * String typeLine = sc.nextLine();
 		 */
-		String typeLine = (String) JOptionPane.showInputDialog(null, "You can now choose your Tamagochi's type  \n "
-				+ "Press 1 for a Dragon \n" + "Press 2 for a Cat \n" + "Press 3 for a Fish \n",
-				"Tamagochi",JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
+		String typeLine = (String) JOptionPane.showInputDialog(null,
+				"You can now choose your Tamagochi's type  \n" + "· Press 1 for a Dragon \n" + "· Press 2 for a Cat \n"
+						+ "· Press 3 for a Fish \n",
+				"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 		int type = 0;
 
 		try {
@@ -130,15 +133,19 @@ public class MainScript {
 
 		// Ask for the name
 
-		String name = (String) JOptionPane.showInputDialog(null, "Please enter the name of your Tamagochi",
-				"Tamagochi",
-				JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+		String name = (String) JOptionPane.showInputDialog(null, "Please enter the name of your Tamagochi", "Tamagochi",
+				JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 		// Turn the first letter in uppercase
 		String nameUp = name.substring(0, 1).toUpperCase() + name.substring(1);
 
 		// Ask for color & hair color
-		String color = JOptionPane.showInputDialog(null, "Please enter the color of your Tamagochi");
-		String hairColor = JOptionPane.showInputDialog(null, "Please enter the haircolor of your Tamagochi");
+		String color = (String) JOptionPane.showInputDialog(null, "Please enter the color of your Tamagochi", "Tamagochi",
+				JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"),  null, "");
+		String hairColor = (String) JOptionPane.showInputDialog(null, "Please enter the haircolor of your Tamagochi", "Tamagochi",
+				JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"),  null, "");
 
 		// Instanciate the new Tamagochi
 		Tamagochi tamagochiPlayer = null;
@@ -192,8 +199,10 @@ public class MainScript {
 	public static void commandListener(Tamagochi tam, TamagochiDragon elysia, TamagochiCat carol,
 			TamagochiFish charles) {
 
-		String commandLine = JOptionPane.showInputDialog(null, "*************************************************** \n "
-				+ "Can I take your command ? \n" + "You will find all the possibilities in the command system");
+		String commandLine = (String) JOptionPane.showInputDialog(null, 
+				 "Can I take your command ? \n" + "You will find all the possibilities in the command system", "Tamagochi",
+				JOptionPane.INFORMATION_MESSAGE,
+				new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"),  null, "");
 		int command = 0;
 
 		try {
@@ -244,10 +253,11 @@ public class MainScript {
 
 		// EAT
 		case 6:
-			String food = (String) JOptionPane.showInputDialog(null, "6. " + tam.getName()
-					+ " is eating / Please enter the food you want " + tam.getName() + " to eat : ",
-					"Tamagochi",
-					JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+			String food = (String) JOptionPane.showInputDialog(null,
+					"6. " + tam.getName() + " is eating / Please enter the food you want " + tam.getName()
+							+ " to eat : ",
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 			tam.isEating(food);
 			break;
 
@@ -264,8 +274,8 @@ public class MainScript {
 							+ charles.getName() + ", it's " + charles.getColor() + " and has " + charles.getHairColor()
 							+ " hair, \n"
 							+ "Please enter the number (1, 2 or 3) of the Tamagochi you want to hang out with",
-							"Tamagochi",
-							JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 
 			int friend = 0;
 
@@ -308,8 +318,8 @@ public class MainScript {
 							+ carol.getHairColor() + " hair \n" + "3. " + charles.getName() + ", it's "
 							+ charles.getColor() + " and has " + charles.getHairColor() + " hair, \n"
 							+ "Please enter the number (1, 2 or 3) of the Tamagochi you want to hang out with",
-							"Tamagochi",
-							JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 
 			int parent = Integer.parseInt(parentLine);
 
@@ -317,15 +327,15 @@ public class MainScript {
 			String babyTypeLine = (String) JOptionPane.showInputDialog(null,
 					"Please enter the number (1, 2 or 3) of the Tamagochi you want to have a baby with \n "
 							+ "1. Dragon \n" + "2. Cat \n" + "3. Fish \n",
-							"Tamagochi",
-							JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 
 			int babyType = Integer.parseInt(babyTypeLine);
 
 			// Choose baby name
 			String babyName = (String) JOptionPane.showInputDialog(null, "Please enter your new baby's name",
-					"Tamagochi",
-					JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 
 			// launches method to create baby with all parameters
 			switch (parent) {
@@ -365,15 +375,16 @@ public class MainScript {
 
 		// DYE HAIR
 		case 11:
-			JOptionPane.showMessageDialog(null, "11. " + tam.getName()
-					+ "is willing to dye its hair / Please enter the name of the color you want it : ", "Tamagochi",
-					JOptionPane.INFORMATION_MESSAGE,
+			JOptionPane.showMessageDialog(null,
+					"11. " + tam.getName()
+							+ "is willing to dye its hair / Please enter the name of the color you want it : ",
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 
 			String dyeingColor = (String) JOptionPane.showInputDialog(null, "11. \" + tam.getName()\r\n"
 					+ "					+ \"is willing to dye its hair / Please enter the name of the color you want it :",
-					"Tamagochi",
-					JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null,"");
+					"Tamagochi", JOptionPane.INFORMATION_MESSAGE,
+					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"), null, "");
 			tam.setHairColor(dyeingColor);
 			break;
 
@@ -418,7 +429,7 @@ public class MainScript {
 		f.setSize(image.getIconWidth(), image.getIconHeight()); // gets h and w of image and sets jframe to the size
 
 		int x = (screenSize.width - f.getSize().width) / 2; // These two lines are the dimensions
-		int y = (screenSize.height / 2 - f.getSize().height) / 2;// of the center of the screen
+		int y = (screenSize.height / 3 - f.getSize().height) / 2;// of the center of the screen
 
 		f.setLocation(x, y); // sets the location of the jframe
 		f.setVisible(true); // makes the jframe visible

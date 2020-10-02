@@ -53,7 +53,7 @@ public abstract class Tamagochi {
 	 */
 	public void getStatus() {
 		JOptionPane.showMessageDialog(null, "Lifetime Level : " + this.lifeTime + "\n Health Level : " + this.health
-				+ " \n Hunger Level : " + this.hunger + "\n Bathroom Level : " + this.bathroom);
+				+ " \n Hunger Level : " + this.hunger + "\n Bathroom Level : " + this.bathroom, "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 	}
 
 	/**
@@ -61,7 +61,7 @@ public abstract class Tamagochi {
 	 * 
 	 */
 	public void isWashingItself() {
-		JOptionPane.showMessageDialog(null, this.name + " : Whaouh ! I'm all CLEAN Now !");
+		JOptionPane.showMessageDialog(null, this.name + " : Whaouh ! I'm all CLEAN Now !", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeBathroom(2);
 		changeHealth(+5);
 		changeHunger(2);
@@ -73,7 +73,7 @@ public abstract class Tamagochi {
 	 * 
 	 */
 	public void isPractising() {
-		JOptionPane.showMessageDialog(null, this.name + " : Whaouh ! Practising makes me feel so STRONG !");
+		JOptionPane.showMessageDialog(null, this.name + " : Whaouh ! Practising makes me feel so STRONG !", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeBathroom(3);
 		changeHealth(+5);
 		changeHunger(15);
@@ -85,7 +85,7 @@ public abstract class Tamagochi {
 	 * 
 	 */
 	public void isGoingToBathroom() {
-		JOptionPane.showMessageDialog(null, this.name + " : I feel lighter ! Thank you very much");
+		JOptionPane.showMessageDialog(null, this.name + " : I feel lighter ! Thank you very much", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeBathroom(0);
 		changeHealth(10);
 		changeHunger(6);
@@ -97,7 +97,7 @@ public abstract class Tamagochi {
 	 * 
 	 */
 	public void isResting() {
-		JOptionPane.showMessageDialog(null, this.name + " : ZZZzzzzzzzzZZZZZzzzzzzzZZZZZzzz");
+		JOptionPane.showMessageDialog(null, this.name + " : ZZZzzzzzzzzZZZZZzzzzzzzZZZZZzzz", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeBathroom(10);
 		changeHealth(+15);
 		changeHunger(2);
@@ -110,7 +110,7 @@ public abstract class Tamagochi {
 	 * @param food
 	 */
 	public void isEating(String food) {
-		JOptionPane.showMessageDialog(null, this.name + " : Mmmmmmh ! This " + food + " is deliciouuuus !! ");
+		JOptionPane.showMessageDialog(null, this.name + " : Mmmmmmh ! This " + food + " is deliciouuuus !! ", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeBathroom(10);
 		changeHealth(+10);
 		changeHunger(-15);
@@ -118,7 +118,7 @@ public abstract class Tamagochi {
 
 		if (this.hunger > 50) {
 			JOptionPane.showMessageDialog(null,
-					this.name + " : Hum... I feel full, try not to feed me so often, it decrease my health...");
+					this.name + " : Hum... I feel full, try not to feed me so often, it decrease my health...", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 			changeHealth(-10);
 		}
 		changeHigh(1);
@@ -131,7 +131,7 @@ public abstract class Tamagochi {
 	 */
 	public void isMeetingAFriend(Tamagochi friend) {
 		JOptionPane.showMessageDialog(null,
-				this.name + " : What a pleasure hanging out with" + friend.getName() + " !");
+				this.name + " : What a pleasure hanging out with" + friend.getName() + " !", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeHealth(5);
 		changeHunger(+2);
 		changeBathroom(+5);
@@ -147,7 +147,7 @@ public abstract class Tamagochi {
 	public void isMakingABaby(Tamagochi partner, String name, int type) {
 
 		JOptionPane.showMessageDialog(null,
-				this.name + " : I'm making a baby named " + name + " with " + partner.getName() + " !");
+				this.name + " : I'm making a baby named " + name + " with " + partner.getName() + " !", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 
 		// Make the baby gets random features from both its parents
 
@@ -162,14 +162,19 @@ public abstract class Tamagochi {
 		// Create the babyTamagochi regarding the type wanted
 		switch (type) {
 		case 1:
-
-			allMyBabies.add(new TamagochiDragon(name, babyColor, babyHairColor));
+			TamagochiDragon babyD = new TamagochiDragon(name, babyColor, babyHairColor);
+			allMyBabies.add(babyD);
+			partner.allMyBabies.add(babyD);
 			break;
 		case 2:
-			allMyBabies.add(new TamagochiCat(name, babyColor, babyHairColor));
+			TamagochiCat babyC = new TamagochiCat(name, babyColor, babyHairColor);
+			allMyBabies.add(babyC);
+			partner.allMyBabies.add(babyC);
 			break;
 		case 3:
-			allMyBabies.add(new TamagochiFish(name, babyColor, babyHairColor));
+			TamagochiFish babyF = new TamagochiFish(name, babyColor, babyHairColor);
+			allMyBabies.add(babyF);
+			partner.allMyBabies.add(babyF);
 			break;
 		default:
 			break;
@@ -179,7 +184,7 @@ public abstract class Tamagochi {
 		JOptionPane.showMessageDialog(null,
 				"..•.¸¸•´¯`•.¸¸. CONGRATULATIONS ..•.¸¸•´¯`•.¸¸. \n" + "\n" + ".•°•. A new baby is born ! Its name is "
 						+ name + ", his color is " + babyColor + " and his hair is " + hairColor + " .•°•.\n " + "\n"
-						+ "You can enter the 9 command to gets all your babies\n");
+						+ "You can enter the 9 command to gets all your babies\n", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		isFeeling("happy");
 		changeBathroom(+10);
 		changeHealth(-20);
@@ -209,7 +214,7 @@ public abstract class Tamagochi {
 	public void isSmoking() {
 
 		JOptionPane.showMessageDialog(null,
-				this.name + " : Kof, kof! I have to quit smoking !! \n");
+				this.name + " : Kof, kof! I have to quit smoking !! \n", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		changeHealth(-20);
 		changeBathroom(2);
 		changeHunger(2);
@@ -228,9 +233,9 @@ public abstract class Tamagochi {
 	public void setHairColor(String hairColor) {
 	
 		if (hairColor.equals("roux") || hairColor.equals("red")) {
-			JOptionPane.showMessageDialog(null, this.name + " : Not in red you fool ! My hair color is still + " + this.hairColor);
+			JOptionPane.showMessageDialog(null, this.name + " : Not in red you fool ! My hair color is still + " + this.hairColor, "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 		} else {
-			JOptionPane.showMessageDialog(null,this.name + " : My hair is now " + this.hairColor);
+			JOptionPane.showMessageDialog(null,this.name + " : My hair is now " + this.hairColor, "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 			this.hairColor = hairColor;
 		}
 	}
@@ -243,7 +248,7 @@ public abstract class Tamagochi {
 	public void setMask(boolean isMask) {
 		
 		if (isMask) {
-			JOptionPane.showMessageDialog(null,this.name + " : Really do I have to where these ? I'm a HAMSTER");
+			JOptionPane.showMessageDialog(null,this.name + " : Really do I have to where these ? I'm a HAMSTER", "Tamagochi", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg") );
 			isFeeling("sad");
 		} else {
 			JOptionPane.showMessageDialog(null, this.name + " : Whaouh, it really feels better");
@@ -339,7 +344,7 @@ public abstract class Tamagochi {
 	public void changeHealth(int pts) {
 		if (isAlive) {
 			this.health += pts;
-			JOptionPane.showMessageDialog(null, pts > 0 ? "+" : "" + pts + " for health. (" + this.health + ") \n", "Tamagochi",
+			JOptionPane.showMessageDialog(null, (pts > 0 ? "+" : "") + pts + " for health. (" + this.health + ") \n", "Tamagochi",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon("C:/Users/ELO.MOREAU/Documents/git/Tamagochi/tamagochi.jpg"));
 			checkHealth();
